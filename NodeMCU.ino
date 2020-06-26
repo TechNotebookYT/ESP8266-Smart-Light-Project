@@ -13,8 +13,13 @@
   products from Adafruit!
 
   Written by Tony DiCola for Adafruit Industries.
+  
+ Modified by Tech Notebook:
+ YouTube Channel: https://www.youtube.com/channel/UCgF78i8PUYdKLgjpyeCJ7Qg
+ 
   MIT license, all text above must be included in any redistribution
  ****************************************************/
+
 #include <ESP8266WiFi.h>
 #include "Adafruit_MQTT.h"
 #include "Adafruit_MQTT_Client.h"
@@ -47,7 +52,7 @@ Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO
 Adafruit_MQTT_Subscribe onoffbutton = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "TOPIC HERE");
 /*************************** Vars *******************************************/
 
-int ledPin = 13;
+int relayPin = 13;
 /*************************** Sketch Code ************************************/
 
 // Bug workaround for Arduino 1.6.6, it seems to need a function declaration
@@ -57,7 +62,7 @@ void MQTT_connect();
 void setup() {
   Serial.begin(115200);
   delay(10);
-  pinMode(ledPin, OUTPUT);
+  pinMode(relayPin, OUTPUT);
   //Serial.println(F("Tech Notebook MQTT demo"));
 
   // Connect to WiFi access point.
@@ -96,7 +101,7 @@ void loop() {
       Serial.print(F("Got: "));
       Serial.println((char *)onoffbutton.lastread);
       int on_off_button_state = atoi((char *)onoffbutton.lastread);
-      digitalWrite(ledPin, on_off_button_state);
+      digitalWrite(relay, on_off_button_state);
      
     }
   }
