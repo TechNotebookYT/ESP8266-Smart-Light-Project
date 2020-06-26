@@ -101,7 +101,7 @@ void loop() {
       Serial.print(F("Got: "));
       Serial.println((char *)onoffbutton.lastread);
       int on_off_button_state = atoi((char *)onoffbutton.lastread);
-      digitalWrite(relay, on_off_button_state);
+      digitalWrite(relayPin, on_off_button_state);
      
     }
   }
