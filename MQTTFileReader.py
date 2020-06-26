@@ -26,16 +26,16 @@ client.loop_start()
 while True:
     with open('mqtt.txt', 'r+') as file:
         contents = file.read()
-        if contents == '0.0':
-            if last_value != 0.0:
-                last_value = 0.0
+        if contents == '0':
+            if last_value != 0:
+                last_value = 0
                 print(last_value)
                 file.truncate(0)
                 client.publish('ESP8266 Topic', '0')
                 print('published')
-        elif contents == '0.1':
-            if last_value != 0.1:
-                last_value = 0.1
+        elif contents == '1':
+            if last_value != 1:
+                last_value = 1
                 print(last_value)
                 file.truncate(0)
                 client.publish('ESP8266 TOPIC', '1')
