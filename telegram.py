@@ -27,6 +27,8 @@ while True:
         verified_sender = #SENDER HERE
 
         broker_address = 'IP ADDR'
+        
+        topic = 'TOPIC HERE'
 
 
 
@@ -58,7 +60,7 @@ while True:
 
             client.loop_start()
 
-            client.publish('TOPIC HERE', state)
+            client.publish(topic, state)
 
             print('publish')
 
